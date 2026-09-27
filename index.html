@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>У меня к тебе приглашение 🍔</title>
+  <meta name="description" content="Открой, это важно">
+  <meta property="og:title" content="У меня к тебе приглашение 🍔">
+  <meta property="og:description" content="Открой, это важно">
+  <meta name="theme-color" content="#7fbfff">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+  </div>
+
+  <div class="woods" aria-hidden="true">
+    <div class="tree tree--far tree--l2">
+      <div class="canopy canopy--sm"></div>
+      <div class="trunk trunk--sm"></div>
+    </div>
+    <div class="tree tree--l">
+      <div class="canopy"></div>
+      <div class="trunk"></div>
+    </div>
+    <div class="tree tree--r">
+      <div class="canopy canopy--wide"></div>
+      <div class="trunk"></div>
+    </div>
+    <div class="tree tree--far tree--r2">
+      <div class="canopy canopy--sm"></div>
+      <div class="trunk trunk--sm"></div>
+    </div>
+  </div>
+
+  <main class="scene">
+    <header class="title">
+      <p class="title__small">Приглашаю тебя в</p>
+      <h1 class="title__big">Бургер Кинг</h1>
+      <span class="splash">Только ты и я!</span>
+    </header>
+
+    <div class="burger" id="burger" role="img" aria-label="Пошли есть бургеры со мной?">
+      <div class="layer bun-top" data-tex="bun"><span>Пошли</span></div>
+      <div class="layer lettuce" data-tex="lettuce"></div>
+      <div class="layer tomato" data-tex="tomato"></div>
+      <div class="layer cheese" data-tex="cheese"><span>есть</span></div>
+      <div class="layer patty" data-tex="patty"><span>бургеры</span></div>
+      <div class="layer bun-bottom" data-tex="bun"><span>со мной?</span></div>
+    </div>
+
+    <div class="ask" id="ask">
+      <button class="mc-btn mc-btn--yes" id="yes" type="button">Да!</button>
+      <button class="mc-btn mc-btn--no" id="no" type="button">Нет</button>
+    </div>
+  </main>
+
+  <section class="win" id="win" hidden>
+    <p class="win__big">Ура!</p>
+    <div class="health" id="health" aria-hidden="true"></div>
+    <p class="win__text">Я тебя люблю</p>
+    <p class="win__when" id="when" hidden></p>
+  </section>
+
+  <div class="toast" id="toast" aria-live="polite">
+    <p class="toast__title">Достижение получено!</p>
+    <p class="toast__text">Свидание с бургерами</p>
+  </div>
+
+  <div class="ground" aria-hidden="true"></div>
+
+  <script src="script.js?v=6"></script>
+</body>
+</html>
