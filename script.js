@@ -142,6 +142,7 @@ function dropBurger() {
 
   if (reducedMotion) {
     ask.classList.add('show');
+    burger.style.pointerEvents = 'none';
     return;
   }
 
@@ -155,11 +156,17 @@ function dropBurger() {
     timers.push(setTimeout(() => burst(el), (delay + DUR * 0.65) * 1000));
   });
 
-  timers.push(setTimeout(() => ask.classList.add('show'), (START + (layers.length - 1) * STEP + DUR + 0.2) * 1000));
+  timers.push(setTimeout(() => {
+    ask.classList.add('show');
+    burger.style.pointerEvents = 'none';
+  }, (START + (layers.length - 1) * STEP + DUR + 0.2) * 1000));
 }
 
 dropBurger();
-burger.addEventListener('click', () => {
+burger.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (ask.classList.contains('show')) return;
+  if (performance.now() - lastFlee < 600) return;
   if (burger.getAnimations({ subtree: true }).some((a) => a.playState === 'running')) return;
   dropBurger();
 });
@@ -221,11 +228,17 @@ function flee(e) {
 }
 
 no.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse' && !creeperBusy) flee(); });
-no.addEventListener('pointerdown', (e) => { if (!creeperBusy) flee(e); });
+no.addEventListener('pointerdown', (e) => {
+  if (creeperBusy) return;
+  e.preventDefault();
+  e.stopPropagation();
+  flee(e);
+});
 no.addEventListener('click', (e) => {
-  if (creeperBusy) { e.preventDefault(); return; }
+  e.preventDefault();
+  e.stopPropagation();
+  if (creeperBusy) return;
   if (e.detail === 0) flee(e);
-  else e.preventDefault();
 });
 
 /* ---------- creeper ---------- */
